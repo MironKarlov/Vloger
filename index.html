@@ -1,0 +1,583 @@
+Вот HTML-код на одну из самых популярных современных тем — «Тёмный профиль разработчика / AI-блогера» с акцентом на «скилл-стек» и минимализм.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Тёмный профиль | AI-разработчик</title>
+    <!-- Google Fonts: современный гротеск и моноширинный -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free kit via CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0B0E14;  /* глубокий тёмный фон */
+            font-family: 'Inter', sans-serif;
+            color: #E9EDF2;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* кастомный скролл */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1A1F2A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3C4B6A;
+            border-radius: 8px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ========== ГЛАВНАЯ ГЕРОЙ СЕКЦИЯ ========== */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0 60px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(72, 187, 255, 0.12);
+            backdrop-filter: blur(4px);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #6DC9FF;
+            border: 0.5px solid rgba(109, 201, 255, 0.3);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 8vw, 5.2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF 30%, #8EC5FC 70%, #E0C3FC 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero .highlight {
+            color: #6DC9FF;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            max-width: 620px;
+            margin: 0 auto 32px;
+            color: #B1C3DF;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(95deg, #2D6AFF, #9747FF);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(45, 106, 255, 0.25);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(45, 106, 255, 0.4);
+            background: linear-gradient(95deg, #3E75FF, #A159FF);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(109, 201, 255, 0.6);
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #CFE6FF;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline:hover {
+            border-color: #6DC9FF;
+            background: rgba(109, 201, 255, 0.08);
+            color: white;
+        }
+
+        /* секция скиллов / популярных технологий */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(61, 81, 112, 0.3);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-sub {
+            color: #90A2BF;
+            max-width: 680px;
+            margin-bottom: 56px;
+            font-size: 1.05rem;
+        }
+
+        /* стек карточки */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .skill-card {
+            background: rgba(18, 24, 34, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 28px 24px;
+            border: 1px solid rgba(72, 110, 160, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #2F6EAF;
+            background: rgba(25, 34, 48, 0.8);
+            transform: translateY(-4px);
+        }
+
+        .skill-icon {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            color: #78C0FF;
+        }
+
+        .skill-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tags span {
+            background: #16202e;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #B8D0F0;
+        }
+
+        /* галерея проектов / популярные направления */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .project-item {
+            background: #11161F;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #242C38;
+            transition: 0.2s;
+        }
+
+        .project-img {
+            height: 180px;
+            background: linear-gradient(135deg, #0F212E, #1A2A3A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #AAD0FF;
+        }
+
+        .project-info {
+            padding: 24px;
+        }
+
+        .project-info h4 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .project-info p {
+            color: #9AACCA;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .tech-stack span {
+            background: #1A2535;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-family: monospace;
+        }
+
+        /* секция "Почему популярно" — статья AI / тренды */
+        .trend-banner {
+            background: linear-gradient(125deg, #0F1622, #0B1321);
+            border-radius: 32px;
+            padding: 48px 40px;
+            border: 1px solid #2C3A50;
+            margin-top: 30px;
+        }
+
+        .flex-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+            margin: 40px 0 20px;
+        }
+
+        .stat {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #FFF, #88C0FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* подвал */
+        .footer {
+            padding: 48px 0 32px;
+            text-align: center;
+            color: #7D8EAD;
+            font-size: 0.85rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            margin: 24px 0 20px;
+        }
+        .social-icons a {
+            color: #9DB2D4;
+            font-size: 1.5rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #6DC9FF;
+            transform: translateY(-2px);
+        }
+
+        /* частица анимации под героем (декор) */
+        .glow-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(45,106,255,0.2) 0%, rgba(45,106,255,0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            top: 20%;
+            left: -10%;
+        }
+        .glow-orb-2 {
+            bottom: 0;
+            right: -10%;
+            top: auto;
+            background: radial-gradient(circle, rgba(151,71,255,0.2) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 20px;
+            }
+            .trend-banner {
+                padding: 32px 24px;
+            }
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="glow-orb"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="container">
+        <span class="hero-badge"><i class="fas fa-brain" style="margin-right: 6px;"></i> AI NATIVE • 2026</span>
+        <h1>Код. Создавай. <span class="highlight">Вдохновляй.</span></h1>
+        <p class="hero-desc">
+            Backend • AI-интеграции • Full-stack разработка. Самые востребованные технологии в одном профиле.
+        </p>
+        <div class="btn-group">
+            <a href="#" class="btn-primary"><i class="fab fa-github"></i> GitHub Pro</a>
+            <a href="#" class="btn-outline"><i class="fas fa-arrow-down"></i> Портфолио</a>
+        </div>
+    </div>
+</div>
+
+<main>
+    <!-- БЛОК: САМЫЕ ПОПУЛЯРНЫЕ ТЕХНОЛОГИИ (ТРЕНДЫ 2026) -->
+    <div class="section">
+        <div class="container">
+            <div class="section-title">🔥 Tech Stack <span style="color:#6DC9FF;">#Популярное</span></div>
+            <div class="section-sub">Топ технологий по версии сообщества разработчиков и AI-рынка — от нейросетей до облачной архитектуры.</div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python & AI</h3>
+                    <p>Лидер по Data Science, LLM-агенты, бэкенды. Библиотеки: LangChain, FastAPI, PyTorch.</p>
+                    <div class="skill-tags"><span>#LangChain</span><span>#PyTorch</span><span>#AutoGen</span></div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-js"></i> + <i class="fab fa-react"></i></div>
+                    <h3>TypeScript / React</h3>
+                    <p>Экосистема фронтенда и fullstack. Next.js 15, Tailwind, Server Components — стандарт 2026.</p>
+                    <div class="skill-tags"><span>#Next.js</span><span>#tRPC</span><span>#Shadcn/ui</span></div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+                    <h3>Cloud Native</h3>
+                    <p>Kubernetes, Docker, AWS/Azure. Serverless и Edge computing — новая норма.</p>
+                    <div class="skill-tags"><span>#K8s</span><span>#Terraform</span><span>#Lambda</span></div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3>БД нового поколения</h3>
+                    <p>PostgreSQL, Prisma, Redis, векторные БД (Pinecone, Qdrant) для RAG-систем.</p>
+                    <div class="skill-tags"><span>#VectorDB</span><span>#Supabase</span><span>#MongoDB</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПОПУЛЯРНЫЕ ПРОЕКТЫ / НАПРАВЛЕНИЯ -->
+    <div class="section">
+        <div class="container">
+            <div class="section-title">✨ AI & Dev проекты — тренд сезона</div>
+            <div class="section-sub">Что сейчас разрабатывают прогрессивные команды: от AI-ассистентов до Web3-приложений.</div>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-img"><i class="fas fa-robot"></i> 🤖</div>
+                    <div class="project-info">
+                        <h4>LLM RAG агент</h4>
+                        <p>Персональный AI-помощник с памятью, интеграция с Telegram, FastAPI + LlamaIndex.</p>
+                        <div class="tech-stack"><span>Python</span><span>LlamaIndex</span><span>Postgres</span><span>OpenAI</span></div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-img"><i class="fas fa-chart-line"></i> 📊</div>
+                    <div class="project-info">
+                        <h4>AI-дашборд аналитики</h4>
+                        <p>Генерация инсайтов на естественном языке, визуализация, прогнозирование трендов.</p>
+                        <div class="tech-stack"><span>Next.js</span><span>Plotly</span><span>FastAPI</span><span>MLflow</span></div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-img"><i class="fas fa-cube"></i> 🧠</div>
+                    <div class="project-info">
+                        <h4>Multimodal search engine</h4>
+                        <p>Поиск по изображениям и тексту с использованием CLIP и векторных БД.</p>
+                        <div class="tech-stack"><span>PyTorch</span><span>Qdrant</span><span>Transformers</span><span>React</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СТАТИСТИКА + ПОПУЛЯРНЫЕ ЗАПРОСЫ -->
+    <div class="section">
+        <div class="container">
+            <div class="trend-banner">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                    <i class="fas fa-chart-simple" style="font-size: 2rem; color: #6DC9FF;"></i>
+                    <h2 style="font-size: 1.8rem; font-weight: 700;">Почему это популярно прямо сейчас?</h2>
+                </div>
+                <p style="font-size: 1rem; margin: 16px 0 8px; color: #B7CFEE;">Рынок разработки смещается в сторону AI-first подхода. 87% компаний интегрируют LLM в свои продукты. Fullstack + AI становится must-have профилем.</p>
+                <div class="flex-stats">
+                    <div class="stat"><span class="stat-number">+240%</span><br>вакансий AI-инженеров за год</div>
+                    <div class="stat"><span class="stat-number">68%</span><br>кода в проектах — TypeScript / Python</div>
+                    <div class="stat"><span class="stat-number">#1</span><br>запрос "агентный AI" на GitHub</div>
+                </div>
+                <div style="margin-top: 30px; background: #0A1019; border-radius: 26px; padding: 20px 24px; border-left: 4px solid #2D6AFF;">
+                    <i class="fas fa-quote-left" style="margin-right: 12px; opacity: 0.6;"></i>
+                    Искусственный интеллект перестал быть хайпом — это базовая компетенция. Инженеры, владеющие RAG, fine-tuning и MLOps, формируют новое ядро IT.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ОПРОС/ИНТЕРАКТИВ (маленькая популярная фишка) -->
+    <div class="section" style="border-bottom: none;">
+        <div class="container">
+            <div class="section-title">📢 Голос сообщества</div>
+            <div class="section-sub">Что выберешь ты? Интерактивный опрос — топ направлений 2026</div>
+            <div style="background: #10161f; border-radius: 40px; padding: 24px 28px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center;">
+                    <div style="flex: 2;">
+                        <p style="font-weight: 500; margin-bottom: 16px;">Самая 🔥 технология для изучения в этом году?</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                            <button class="vote-btn" data-vote="ai-eng" style="background: #1B2535; border: none; padding: 8px 18px; border-radius: 60px; color: #CFE6FF; cursor: pointer; font-weight: 500; transition: 0.1s;">🧠 AI-инжиниринг</button>
+                            <button class="vote-btn" data-vote="web3" style="background: #1B2535; border: none; padding: 8px 18px; border-radius: 60px; color: #CFE6FF; cursor: pointer;">⚡ WebAssembly / Edge</button>
+                            <button class="vote-btn" data-vote="backend" style="background: #1B2535; border: none; padding: 8px 18px; border-radius: 60px; color: #CFE6FF; cursor: pointer;">🦀 Rust /高性能 backend</button>
+                        </div>
+                    </div>
+                    <div style="background: #0E1420; border-radius: 34px; padding: 12px 24px; min-width: 160px; text-align: center;">
+                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">Всего голосов</div>
+                        <div id="voteCountDisplay" style="font-size: 2rem; font-weight: 800;">0</div>
+                    </div>
+                </div>
+                <div id="voteMessage" style="margin-top: 20px; font-size: 0.85rem; color: #79B8FF;"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>© 2026 AI Developer Profile — Самый популярный стек и видение будущего. <br>Сделано с <i class="fas fa-heart" style="color: #ff7a7a;"></i> для разработчиков нового поколения.</p>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        // --- интерактивный опрос (простой счетчик в localStorage) ---
+        let votes = {
+            'ai-eng': 0,
+            'web3': 0,
+            'backend': 0
+        };
+        let totalVotes = 0;
+
+        // загрузка сохранённых голосов
+        try {
+            const saved = localStorage.getItem('devPoll2026');
+            if(saved) {
+                const parsed = JSON.parse(saved);
+                if(parsed.votes) votes = parsed.votes;
+                if(parsed.total) totalVotes = parsed.total;
+                else {
+                    totalVotes = Object.values(votes).reduce((a,b)=>a+b,0);
+                }
+            }
+        } catch(e) {}
+
+        // Обновить отображение
+        function updateUI() {
+            const voteDisplay = document.getElementById('voteCountDisplay');
+            if(voteDisplay) voteDisplay.innerText = totalVotes;
+        }
+
+        updateUI();
+
+        // обработчики для кнопок
+        const btns = document.querySelectorAll('.vote-btn');
+        const msgDiv = document.getElementById('voteMessage');
+
+        function saveToLocal() {
+            localStorage.setItem('devPoll2026', JSON.stringify({ votes: votes, total: totalVotes }));
+        }
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const voteType = btn.getAttribute('data-vote');
+                if(voteType && votes.hasOwnProperty(voteType)) {
+                    votes[voteType] += 1;
+                    totalVotes += 1;
+                    saveToLocal();
+                    updateUI();
+                    if(msgDiv) {
+                        msgDiv.innerHTML = `✅ Спасибо! Ваш голос принят (всего ${totalVotes} участников). Популярный выбор формируется прямо сейчас.`;
+                        setTimeout(() => {
+                            msgDiv.innerHTML = '';
+                        }, 2800);
+                    }
+                    // небольшая анимация
+                    btn.style.transform = 'scale(0.97)';
+                    setTimeout(() => { btn.style.transform = ''; }, 120);
+                }
+            });
+        });
+
+        // дополнительный эффект при наведении на карточки
+        const cards = document.querySelectorAll('.skill-card, .project-item');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'all 0.2s ease';
+            });
+        });
+
+        // Консольное приветствие
+        console.log('%c🔥 Популярный профиль разработчика | AI-first стек 2026', 'color: #6DC9FF; font-size: 14px; font-weight: bold;');
+    })();
+</script>
+</body>
+</html>
+```
